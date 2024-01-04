@@ -20,5 +20,12 @@ pipeline {
 
             }
         }
+        stage("Code Analysis"){
+            steps{
+                withSonarQubeEnv('sonar') {
+                    bat "./gradlew sonar"
+                }
+            }
+        }
     }
 }
