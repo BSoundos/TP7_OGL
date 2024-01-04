@@ -119,8 +119,9 @@ public class MatrixMathematics {
 		if(determinant(matrix)==0) {
 				System.out.println("Determinant == 0");
 				return matrix ;
+		} else {
+			return (transpose(cofactor(matrix)).multiplyByConstant(1.0 / determinant(matrix)));
 		}
-		return (transpose(cofactor(matrix)).multiplyByConstant(1.0/determinant(matrix)));
 	}
 
 
