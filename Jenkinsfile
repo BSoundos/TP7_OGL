@@ -34,12 +34,22 @@ pipeline {
         }
 
         stage("Build") {
-        steps {
-            bat './gradlew build'
-            bat './gradlew javadoc'
-            archiveArtifacts 'build/libs/*.jar'
-            archiveArtifacts 'build/docs/'
+            steps {
+                bat './gradlew build'
+                bat './gradlew javadoc'
+                archiveArtifacts 'build/libs/*.jar'
+                archiveArtifacts 'build/docs/'
             }
         }
+
+
+        stage("Deploy"){
+            steps {
+                bat './gradlew publish'
+            }
+        }
+
+
+
     }
 }
