@@ -1,4 +1,5 @@
 package com.example.model;
+import java.util.Objects;
 
 public class Matrix {
 
@@ -96,8 +97,25 @@ public class Matrix {
 		}
 
 
-	return  true;
+		return  true;
 
 	}
+
+
+
+	@Override
+	public int hashCode() {
+		int result = 0;
+
+		for (int i = 0; i < nrows; i++) {
+			for (int j = 0; j < ncols; j++) {
+				result = result + Objects.hashCode(this.getValueAt(i, j));
+			}
+		}
+
+		return result;
+	}
+
+
 
 }
