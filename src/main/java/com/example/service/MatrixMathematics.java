@@ -116,13 +116,17 @@ public class MatrixMathematics {
 	 */
 	public static Matrix inverse(Matrix matrix) throws NoSquareException {
 
-		if(determinant(matrix)==0) {
-				System.out.println("Determinant == 0");
-				return matrix ;
-		} else {
-			return (transpose(cofactor(matrix)).multiplyByConstant(1.0 / determinant(matrix)));
+		double det = determinant(matrix);
+
+		if(det==0.0) {
+			det = 1 ;
+			System.out.println("Determinant == 0");
 		}
-	}
+
+		Matrix matrix2 = transpose(cofactor(matrix)).multiplyByConstant(1.0 / det);
+
+        return matrix2;
+    }
 
 
 	public  void test() {
