@@ -9,7 +9,7 @@ pipeline {
                 archiveArtifacts 'build/reports/tests/test/'
                 cucumber buildStatus: 'UNSTABLE',
                          reportTitle: 'CucumberReport',
-                         fileIncludePattern: '**/*.json',
+                         fileIncludePattern: 'target/report.json',
                          trendsLimit: 10,
                          classifications: [
                                [
@@ -64,10 +64,5 @@ pipeline {
                   }
             }
         }
-    }
-    post {
-            always {
-                junit 'build/reports/**/*.xml'
-            }
     }
 }
