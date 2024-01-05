@@ -48,19 +48,19 @@ pipeline {
                 bat './gradlew publish'
             }
             post {
+                  success {
+                       notifyEvents message: 'Success ',
+                       token: 'qn5ihe_o3vcuozbjdg-8ke-3lhiy3o6t'
+                       mail to: 'ks_benni@esi.dz',
+                       subject: "Success",
+                       body: "Deployment successful"
+                  }
                   failure {
                         notifyEvents message: 'Failure',
                         token: 'qn5ihe_o3vcuozbjdg-8ke-3lhiy3o6t'
                         mail to: 'ks_benni@esi.dz',
                         subject: "Failure",
                         body: "Something went wrong "
-                  }
-                  success {
-                         notifyEvents message: 'Success ',
-                         token: 'qn5ihe_o3vcuozbjdg-8ke-3lhiy3o6t'
-                         mail to: 'ks_benni@esi.dz',
-                         subject: "Success",
-                         body: "Deployment successful"
                   }
             }
         }

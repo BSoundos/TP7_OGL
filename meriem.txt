@@ -25,7 +25,8 @@ stage("Deploy"){
 steps {bat './gradlew publish'}
 }
 stage("notification") {
-steps {bat 'ls'}post {
+steps {bat 'ls'}
+post {
 failure {notifyEvents message: 'Failure', token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'mail to: 'km_hathat@esi.dz',subject: "Failure",body: "Something went wrong "}success {notifyEvents message: 'Success ', token: 'v1vwv5hma4ribtadfrsz3rbhjii-ba6s'mail to: 'km_hathat@esi.dz',subject: "Success",body: "Deployment successful"}}}
 
 
