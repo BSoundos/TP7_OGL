@@ -8,15 +8,15 @@ pipeline {
                 bat './gradlew test'
                 archiveArtifacts 'build/reports/tests/test/'
                 cucumber buildStatus: 'UNSTABLE',
-                                reportTitle: 'CucumberReport',
-                                fileIncludePattern: '**/*.json',
-                                trendsLimit: 10,
-                                classifications: [
-                                    [
-                                        'key': 'Browser',
-                                        'value': 'Firefox'
-                                    ]
-                                ]
+                         reportTitle: 'CucumberReport',
+                         fileIncludePattern: '**/*.json',
+                         trendsLimit: 10,
+                         classifications: [
+                               [
+                                    'key': 'Browser',
+                                    'value': 'Firefox'
+                               ]
+                         ]
 
             }
         }
@@ -64,5 +64,10 @@ pipeline {
                   }
             }
         }
+    }
+    post {
+            always {
+                junit 'build/reports/**/*.xml'
+            }
     }
 }
