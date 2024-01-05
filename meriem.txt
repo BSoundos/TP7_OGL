@@ -21,9 +21,7 @@ stage("Build"){
 steps {bat './gradlew build'bat './gradlew javadoc'archiveArtifacts 'build/libs/*.jar'}
 }
 
-stage("Deploy"){
-steps {bat './gradlew publish'}
-}
+
 stage("notification") {
 steps {bat 'ls'}
 post {
